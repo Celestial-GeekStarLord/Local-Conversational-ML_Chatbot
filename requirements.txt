@@ -1,0 +1,1 @@
+pip install tensorflow nltk numpy scikit-learn flask colorama
