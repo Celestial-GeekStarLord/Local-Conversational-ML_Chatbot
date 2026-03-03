@@ -23,9 +23,23 @@ while True:
     seq = tokenizer.texts_to_sequences([text])
     padded = tf.keras.preprocessing.sequence.pad_sequences(seq, maxlen=max_len)
 
-    pred = model.predict(padded, verbose=0)
-    word_index = np.argmax(pred)
+    pred = model.predict(padded, verbose=0)[0]   # take first batch
 
-    response = index_word.get(word_index, "I don't know what to say.")
+    response_words = []
+
+    for timestep in pred:
+        predicted_index = np.argmax(timestep)
+
+        if predicted_index == 0:
+            continue
+
+        word = index_word.get(predicted_index)
+        if word:
+            response_words.append(word)
+
+    response = " ".join(response_words).strip()
+
+    if response == "":
+        response = "I don't know what to say."
 
     print("Bot:", response)

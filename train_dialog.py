@@ -75,7 +75,7 @@ print("Training model...")
 model.fit(
     input_seq,
     y,
-    epochs=50,
+    epochs=200,
     batch_size=32
 )
 
