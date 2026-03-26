@@ -15,6 +15,7 @@ model = model.to(device)
 
 print(f"Running on: {device}")
 
+
 # Conversation history (BlenderBot supports multi-turn context)
 conversation_history = []
 
