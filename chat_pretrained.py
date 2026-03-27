@@ -9,7 +9,7 @@ tokenizer = BlenderbotTokenizer.from_pretrained(SAVE_DIR)
 model = BlenderbotForConditionalGeneration.from_pretrained(SAVE_DIR)
 model.eval()
 
-# Use GPU if available
+
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 model = model.to(device)
 
